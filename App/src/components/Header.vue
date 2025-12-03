@@ -3,7 +3,7 @@
     <nav>
       <router-link to="/" exact>Home</router-link>
       <span>|</span>
-      <router-link to="/signup" exact>Signup</router-link>
+      <router-link to="/contactus" exact>Contact Us</router-link>
     </nav>
   </header>
 </template>
