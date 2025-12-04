@@ -74,32 +74,51 @@ export default {
 }
 
 .center-main{
-  min-width: 700px;
-  border: 3px solid rgb(53, 53, 53);
+  min-width: 800px;
+  border: var(--border-1) 1px solid;
   border-radius: 15px;
+  background: linear-gradient(135deg, 
+    rgba(71, 85, 105, 0.9) 0%, 
+    rgba(100, 116, 139, 0.85) 50%, 
+    rgba(148, 163, 184, 0.8) 100%);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 32px rgba(131, 131, 131, 0.3);
 }
 
 .left-main, .right-main {
   min-width: 200px;
   min-height: 600px;
-  background-color: rgb(184, 169, 169);
+  background: linear-gradient(135deg, 
+    rgba(71, 85, 105, 0.9) 0%, 
+    rgba(100, 116, 139, 0.85) 50%, 
+    rgba(148, 163, 184, 0.8) 100%);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 32px rgba(131, 131, 131, 0.3);
   border-radius: 15px;
+  border: var(--border-1) 1px solid;
 }
 
 /* POSTITUSTE STIILID */
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: 5px; /* Postituste vahe */
+  padding: 15px
 }
 
 .post {
-  background-color: white;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e0e0e0;
+  box-shadow: rgba(131, 131, 131, 0.3);
+  border: 1px solid #717171;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(231, 239, 249, 0.85) 50%, 
+    rgba(255, 255, 255, 0.8) 100%);
+  backdrop-filter: blur(px);
+  box-shadow: 0 8px 32px rgba(131, 131, 131, 0.3);
+  border-radius: 15px;
+  border: var(--border-1) 1px solid;
 }
 
 .post:hover {
@@ -109,7 +128,7 @@ export default {
 
 /* Kuupäeva stiil */
 .post p:first-child {
-  color: #000000;
+  color: #555555;
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 12px;
@@ -118,7 +137,7 @@ export default {
 
 /* Postituse teksti stiil */
 .post p:last-child {
-  color: #333;
+  color: #000000;
   font-size: 16px;
   line-height: 1.5;
   text-align: left;

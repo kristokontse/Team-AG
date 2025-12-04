@@ -49,33 +49,51 @@ background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 
 /* Header / nav */
 .header {
-  width: 95%;
+  width: 100%;
   max-width: 2000px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
   border-radius: 20px;
-  background-color: gray;
+  background: linear-gradient(135deg, 
+    rgba(71, 85, 105, 0.9) 0%, 
+    rgba(100, 116, 139, 0.85) 50%, 
+    rgba(148, 163, 184, 0.8) 100%);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: var(--border-1) 1px solid;
 }
 
 .main-content{
   background:transparent;
 }
 
+
 .header a {
   text-decoration: none;
-  font-size: 22px;
+  font-size: 25px;
   font-weight: bold;
   color: rgb(255, 255, 255);
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
+  padding: 10px 25px;
+  border-radius: 8px;
+  display: inline-block;
 }
 
 .header a:hover {
-  color: rgba(97, 120, 154, 1);
+  color: #fff;
+  text-shadow: 
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 15px #65c6f791,
+    0 0 20px #65c6f78d,
+    0 0 25px #65c6f782,
+    0 0 30px #00aaff47;
+  transform: scale(1.05);
 }
 
 .header .router-link-exact-active {
-  color: rgb(18, 75, 162) !important;
+  color: rgb(255, 255, 255) !important;
 }
 
 .header span {
@@ -83,7 +101,7 @@ background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
   margin: 0 10px;
   font-size: 30px;
   font-weight: bold;
-  color: rgb(255, 255, 255);
+  color: white;
 }
 
 /* Footer */
@@ -95,8 +113,13 @@ background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
   padding: 25px;
   margin-top: auto;
   border-radius: 15px;
-  background-color: gray;
-
+  background: linear-gradient(135deg, 
+    rgba(71, 85, 105, 0.9) 0%, 
+    rgba(100, 116, 139, 0.85) 50%, 
+    rgba(148, 163, 184, 0.8) 100%);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: var(--border-1) 1px solid;
 }
 
 .footer-content {
@@ -112,6 +135,12 @@ background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
   .footer {
     padding: 15px;
     border-radius: 10px;
+    background: linear-gradient(135deg, 
+    rgba(71, 85, 105, 0.9) 0%, 
+    rgba(100, 116, 139, 0.85) 50%, 
+    rgba(148, 163, 184, 0.8) 100%);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 }
 

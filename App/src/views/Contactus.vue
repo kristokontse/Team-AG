@@ -9,3 +9,9 @@ export default {
   name: "Contactus",
 }
 </script>
+
+<style>
+.contactus{
+  color: white;
+}
+</style>
