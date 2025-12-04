@@ -3,7 +3,7 @@ const Pool = require('pg').Pool;
 const pool = new Pool({
     user: "postgres",
     password: "postgres",
-    database: "testWad",
+    database: "AGDATA",
     host: "localhost",
     port: "5433"
 });
@@ -24,17 +24,29 @@ gen_random_uuid() A system function to generate a random Universally Unique IDen
 An example of generated uuid:  32165102-4866-4d2d-b90c-7a2fddbb6bc8
 */
 
-const createTblQuery = `
+const createUsersTable = `
     CREATE TABLE IF NOT EXISTS "users" (
         id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
         email VARCHAR(200) NOT NULL UNIQUE,
         password VARCHAR(200) NOT NULL 
-    );`;
+    );
+`;
 
-execute(createTblQuery).then(result => {
-    if (result) {
-        console.log('Table "users" is created');
-    }
-});
+const createPostTable = `
+    CREATE TABLE IF NOT EXISTS "posttable" (
+        id SERIAL PRIMARY KEY,         
+        body VARCHAR(200) NOT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT NOW()
+    );
+`;
+
+
+(async () => {
+    const usersResult = await execute(createUsersTable);
+    console.log(usersResult ? 'Table "users" created' : 'Error creating "users" table');
+
+    const postResult = await execute(createPostTable);
+    console.log(postResult ? 'Table "posttable" created' : 'Error creating "posttable" table');
+})();
 
 module.exports = pool;

@@ -1,13 +1,22 @@
 <template>
-  <div>
-    <main>
-      <aside class="left-main"></aside>
-      
-      <Posts />
-      
-      <aside class="right-main"></aside>
-    </main>
-  </div>
+  <main>
+  <aside class="left-main"></aside>
+
+  <section class="center-main">
+      <div class="container">
+        <button v-if="authResult" @click="Logout" class="center">Logout</button>
+      </div>
+
+      <div class="post-list" v-for="post in posts" :key="post.id">
+        <div class="post">
+          <p> {{ formatDate(post.created_at) }}</p>
+          <p> {{ post.body }}</p>
+        </div>
+      </div>
+  </section>
+
+  <aside class="right-main"></aside>
+  </main>
 </template>
 
 <script>
@@ -42,9 +51,16 @@ export default {
         console.log("error logout");
       });
     },
-  }, 
+
+    formatDate(datetime) {
+    if (!datetime) return "";
+    const date = new Date(datetime);
+    return date.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+  },
+  
   mounted() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
+        fetch('http://localhost:3000/api/posts')
         .then((response) => response.json())
         .then(data => this.posts = data)
         .catch(err => console.log(err.message))
@@ -70,6 +86,13 @@ main {
   flex: 0 1 200px;
   background-color: lightgray;
   border-radius: 15px;
+}
+
+.center-main {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 @media (max-width: 600px) {
