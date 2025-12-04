@@ -1,22 +1,18 @@
 <template>
-  <main>
-  <aside class="left-main"></aside>
-
-  <section class="center-main">
-      <div class="container">
+    <aside class="left-main"></aside>
+    <section class="center-main">
+      <div class="button-container">
         <button v-if="authResult" @click="Logout" class="center">Logout</button>
       </div>
 
-      <div class="post-list" v-for="post in posts" :key="post.id">
-        <div class="post">
+      <div class="post-list">
+        <div class="post" v-for="post in posts" :key="post.id">
           <p> {{ formatDate(post.created_at) }}</p>
           <p> {{ post.body }}</p>
         </div>
       </div>
-  </section>
-
-  <aside class="right-main"></aside>
-  </main>
+    </section>
+    <aside class="right-main"></aside>
 </template>
 
 <script>
@@ -71,35 +67,78 @@ export default {
 
 <style>
 
-main {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  background: #f2f2f2;
-  gap: 20px;
-  margin: 0;
-}
-
-.left-main, .right-main {
-  min-height: 600px;
-  min-width: 80px;
-  flex: 0 1 200px;
-  background-color: lightgray;
+.button-container{
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-radius: 15px;
 }
 
-.center-main {
-  flex: 1; 
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.center-main{
+  min-width: 700px;
+  border: 3px solid rgb(53, 53, 53);
+  border-radius: 15px;
 }
 
-@media (max-width: 600px) {
-  main {
-    flex-direction: row;
-    gap: 10px;
-    padding: 5px;
+.left-main, .right-main {
+  min-width: 200px;
+  min-height: 600px;
+  background-color: rgb(184, 169, 169);
+  border-radius: 15px;
+}
+
+/* POSTITUSTE STIILID */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Postituste vahe */
+}
+
+.post {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Kuupäeva stiil */
+.post p:first-child {
+  color: #000000;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+/* Postituse teksti stiil */
+.post p:last-child {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  word-break: break-word;
+}
+
+
+@media (max-width: 800px) {
+  .button-background {
+    gap: 15px;
+    padding: 0px;
+    width: 100%;
+  }
+
+  .center-main {
+    min-width: 100% !important; 
+    max-width: 100% !important;
+    width: 100% !important;
+    gap: 15px;
+
   }
 
   .left-main, .right-main {

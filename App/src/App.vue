@@ -22,6 +22,20 @@
 </template>
 
 <style>
+
+
+body {
+background-color:#556;
+background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a), 
+linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+background-size:80px 140px;
+background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+
 #app {
   min-height: 100vh;
   display: flex;
@@ -41,14 +55,18 @@
   padding: 20px;
   text-align: center;
   border-radius: 20px;
-  background-color: lightgray;
+  background-color: gray;
+}
+
+.main-content{
+  background:transparent;
 }
 
 .header a {
   text-decoration: none;
   font-size: 22px;
   font-weight: bold;
-  color: rgba(97, 106, 122, 1);
+  color: rgb(255, 255, 255);
   transition: color 0.2s ease;
 }
 
@@ -65,28 +83,20 @@
   margin: 0 10px;
   font-size: 30px;
   font-weight: bold;
-  color: rgb(18, 75, 162);
-}
-
-/* Main content */
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: #f2f2f2;
+  color: rgb(255, 255, 255);
 }
 
 /* Footer */
 .footer {
-  width: 95%;
+  width: 100%;
   max-width: 2000px;
   margin: 0 auto;
-  background-color: lightgrey;
-  color: rgb(18, 75, 162);
   text-align: center;
   padding: 25px;
   margin-top: auto;
   border-radius: 15px;
+  background-color: gray;
+
 }
 
 .footer-content {
@@ -95,6 +105,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  color: white;
 }
 
 @media (max-width: 600px) {
@@ -103,4 +114,5 @@
     border-radius: 10px;
   }
 }
+
 </style>
