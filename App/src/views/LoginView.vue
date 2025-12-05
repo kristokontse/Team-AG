@@ -57,7 +57,7 @@ LogIn() {
 
 <style scoped>
 .form {
-  max-width: 420px;
+  max-width: 350px;
   margin: 30px auto;
   text-align: left;
   padding: 60px;
@@ -143,5 +143,13 @@ button:active {
 .container {
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: 350px) {
+  .form {
+    max-width: 100%;
+    padding: 30px;
+    margin: 10px auto;
+  }
 }
 </style>

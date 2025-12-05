@@ -176,4 +176,12 @@ div > h3 {
     font-size: x-large;
     margin-bottom: 15px;
 }
+
+@media screen and (max-width: 350px) {
+  .signup-container {
+    max-width: 100%;
+    padding: 15px;
+    margin: 10px auto;
+  }
+}
 </style>
