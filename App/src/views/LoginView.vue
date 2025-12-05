@@ -145,7 +145,7 @@ button:active {
   justify-content: center;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 800px) {
   .form {
     max-width: 100%;
     padding: 30px;

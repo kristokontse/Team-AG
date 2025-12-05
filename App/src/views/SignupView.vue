@@ -177,7 +177,7 @@ div > h3 {
     margin-bottom: 15px;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 800px) {
   .signup-container {
     max-width: 100%;
     padding: 15px;
