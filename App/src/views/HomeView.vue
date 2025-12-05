@@ -11,6 +11,11 @@
           <p> {{ post.body }}</p>
         </div>
       </div>
+
+      <div class="bottom-buttons-box">
+        <button @click="$router.push('/add-post')">Add Post</button>
+        <button v-if="authResult" @click="deleteAll" class="bottom-buttons">Delete all</button>
+      </div>
     </section>
     <aside class="right-main"></aside>
 </template>
@@ -54,6 +59,57 @@ export default {
     return date.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     }
   },
+
+  addPost() {
+  const body = prompt("Write a post:");
+
+  if (!body || body.trim() === "") {
+    alert("Post cannot be empty!");
+    return;
+  }
+
+  fetch("http://localhost:3000/api/posts/", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ body })
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Unauthorized or error");
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Post added:", data);
+      this.posts.push(data.rows[0]); // update UI immediately
+    })
+    .catch((err) => {
+      console.error(err.message);
+      alert("You must be logged in to add posts!");
+    });
+},
+
+deleteAll() {
+  if (!confirm("Are you sure you want to delete ALL posts?")) return;
+
+  fetch("http://localhost:3000/api/posts/deleteAll", {
+    method: "DELETE",
+    credentials: "include",
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Unauthorized or error");
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      this.posts = []; // clear UI
+    })
+    .catch((err) => {
+      console.error(err.message);
+      alert("You must be logged in to delete posts!");
+    });
+},
   
   mounted() {
         fetch('http://localhost:3000/api/posts')

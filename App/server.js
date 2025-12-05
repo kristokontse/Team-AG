@@ -120,19 +120,28 @@ app.post('/auth/login', async(req, res) => {
     }
 });
 
-app.post('/api/posts/', async(req, res) => {
+const requireAuth = (req, res, next) => {
+    const token = req.cookies.jwt;
+    if (!token) return res.status(401).json({ error: "Not authenticated" });
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) return res.status(401).json({ error: "Token not valid" });
+        req.user = decoded.id;
+        next();
+    });
+};
+
+// Posti lisamine
+app.post('/api/posts', requireAuth, async (req, res) => {
     try {
-        console.log("a post request has arrived");
-        const post = req.body;
+        const { content, date } = req.body;
         const newpost = await pool.query(
-            "INSERT INTO posttable(body) values ($1)    RETURNING*", [post.body]
-// $1, $2, $3 are mapped to the first, second and third element of the passed array (post.title, post.body, post.urllink) 
-// The RETURNING keyword in PostgreSQL allows returning a value from the insert or update statement.
-// using "*" after the RETURNING keyword in PostgreSQL, will return everything
+            "INSERT INTO posttable(body, date) VALUES ($1, $2) RETURNING *",
+            [content, date]
         );
-        res.json(newpost);
+        res.json(newpost.rows[0]);
     } catch (err) {
         console.error(err.message);
+        res.status(500).send("Server error");
     }
 });
 
@@ -185,4 +194,14 @@ app.put('/api/posts/:id', async(req, res) => {
 app.get('/auth/logout', (req, res) => {
     console.log('delete jwt request arrived');
     res.status(202).clearCookie('jwt').json({ "Msg": "cookie cleared" }).send
+});
+
+app.delete('/api/posts/deleteAll', requireAuth, async (req, res) => {
+  try {
+    await pool.query("DELETE FROM posttable");
+    res.json({ message: "All posts deleted" });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
 });
