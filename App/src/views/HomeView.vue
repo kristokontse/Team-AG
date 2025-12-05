@@ -74,7 +74,7 @@ export default {
 }
 
 .center-main{
-  min-width: 800px;
+  min-width: 600px;
   border: var(--border-1) 1px solid;
   border-radius: 15px;
   background: linear-gradient(135deg, 

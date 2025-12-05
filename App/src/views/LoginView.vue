@@ -1,6 +1,6 @@
 <template>
   <div class="form">
-    <h3>LogIn</h3>
+    <h3>LOGIN</h3>
     <label for="email">Email</label>
     <input type="email" name="email"  required v-model="email">
     <label for="password">Password</label>
@@ -59,17 +59,23 @@ LogIn() {
 .form {
   max-width: 420px;
   margin: 30px auto;
-  background: rgb(167, 154, 154);
   text-align: left;
-  padding: 40px;
+  padding: 60px;
   border-radius: 10px;
+  background: linear-gradient(135deg, 
+    rgba(71, 85, 105, 0.9) 0%, 
+    rgba(100, 116, 139, 0.85) 50%, 
+    rgba(148, 163, 184, 0.8) 100%);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 h3 {
   text-align: center;
-  color: rgb(8, 110, 110);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
 }
 label {
-  color: rgb(8, 110, 110);
+  color: rgb(255, 255, 255);
   display: inline-block;
   margin: 25px 0 15px;
   font-size: 0.8em;
@@ -84,24 +90,21 @@ input {
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid white;
-  color: blue;
 }
 button {
-  background: rgb(8, 110, 110);
-  border: 0;
-  padding: 10px 20px;
-  margin: 20px 20px 20px 20px;
-  color: white;
+  background: rgb(255, 253, 253);
   border-radius: 20px;
   align-items: center;
   text-align: center;
+  width: 60px;
 }
 .center {
   margin: auto;
-  border: 0;
   padding: 10px 20px;
   margin-top: 20px;
-  width: 30%; 
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 50%; 
 }
 .container {
   display: flex;
