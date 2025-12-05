@@ -17,6 +17,7 @@ export default {
   max-width: 420px;
   margin: 30px auto;
   text-align: left;
+  color: white;
   padding: 60px;
   border-radius: 10px;
   background: linear-gradient(135deg, 
