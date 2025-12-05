@@ -14,7 +14,7 @@ export default {
 
 <style scoped>
 .contactus {
-  max-width: 420px;
+  max-width: 350px;
   margin: 30px auto;
   text-align: left;
   color: white;
