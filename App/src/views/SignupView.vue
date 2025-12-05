@@ -89,22 +89,24 @@ body {
     flex-direction: column;
 }
 
+h3 {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
 .signup-container {    
-    margin: 10px auto;
-    margin-top: 35px;                    
-    background-color: lightgray;
-    padding: 30px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 300px;
-    height: fit-content;  
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 5px;
-    box-shadow: 0px 0px 4px rgb(53, 52, 52);
+  max-width: 420px;
+  margin: 30px auto;
+  text-align: left;
+  padding: 60px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, 
+    rgba(71, 85, 105, 0.9) 0%, 
+    rgba(100, 116, 139, 0.85) 50%, 
+    rgba(148, 163, 184, 0.8) 100%);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .signup-container form {
@@ -145,25 +147,29 @@ body {
   margin-bottom: 4px;
 }
 
-#signup-button {
-    background-color: rgb(18, 75, 162);
-    color: #f2f2f2;
-    font-weight: 700;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 10px;
+button, #signup-button {
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-#signup-button:hover:not(:disabled) {
-    background-color: rgb(8, 49, 112);
+#signup-button, 
+.container button:first-child {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  color: white;
 }
 
-#signup-button:disabled {
-    background-color: #a4b6dcff;
-    cursor: not-allowed;
-    opacity: 0.6;
+#signup-button:hover,
+.container button:first-child:hover {
+  background: linear-gradient(135deg, #35ff83 0%, #408250 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
 }
 
 div > h3 {
