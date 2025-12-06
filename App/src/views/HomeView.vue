@@ -36,8 +36,12 @@ export default {
   },
   methods: {
     goToPost(id) {
-        this.$router.push(`/post/${id}`);
-    },
+  if (!this.authResult) {
+    alert("You must be logged in to view a post!");
+    return;
+  }
+  this.$router.push(`/post/${id}`);
+},
   addPost() {
   const body = prompt("Write a post:");
 

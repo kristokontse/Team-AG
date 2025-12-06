@@ -25,16 +25,19 @@ export default {
   },
   methods: {
     fetchPost() {
-      fetch(`http://localhost:3000/api/posts/${this.postId}`)
-        .then(res => res.json())
-        .then(data => {
-          this.body = data.body;
-        })
-        .catch(err => {
-          console.error(err);
-          this.errorMessage = "Failed to load post.";
-        });
-    },
+  fetch(`http://localhost:3000/api/posts/${this.postId}`, { credentials: "include" })
+    .then(res => {
+      if (!res.ok) throw new Error("Failed to fetch post");
+      return res.json();
+    })
+    .then(data => {
+      this.body = data.body || ""; // täidab textarea
+    })
+    .catch(err => {
+      console.error(err);
+      this.errorMessage = "Failed to load post";
+    });
+},
     updatePost() {
       if (!this.body.trim()) {
         this.errorMessage = "Body cannot be empty";

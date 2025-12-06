@@ -159,7 +159,7 @@ app.get('/api/posts', async(req, res) => {
     }
 });
 
-app.get('/api/posts/:id', async(req, res) => {
+app.get('/api/posts/:id', requireAuth, async(req, res) => {
     try {
         console.log("get a post with route parameter  request has arrived");
         // The req.params property is an object containing properties mapped to the named route "parameters". 
