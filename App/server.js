@@ -194,6 +194,16 @@ app.put('/api/posts/:id', requireAuth, async(req, res) => {
     }
 });
 
+app.delete('/api/posts/delete-all', requireAuth, async (req, res) => {
+  try {
+    await pool.query("DELETE FROM posttable");
+    res.json({ message: "All posts deleted" });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 app.delete('/api/posts/:id', requireAuth, async (req, res) => {
     try {
         const { id } = req.params;
@@ -210,14 +220,4 @@ app.delete('/api/posts/:id', requireAuth, async (req, res) => {
 app.get('/auth/logout', (req, res) => {
     console.log('delete jwt request arrived');
     res.status(202).clearCookie('jwt').json({ "Msg": "cookie cleared" }).send
-});
-
-app.delete('/api/posts/deleteAll', requireAuth, async (req, res) => {
-  try {
-    await pool.query("DELETE FROM posttable");
-    res.json({ message: "All posts deleted" });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server error");
-  }
 });

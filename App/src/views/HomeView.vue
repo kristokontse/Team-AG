@@ -13,7 +13,7 @@
       </div>
 
       <div class="bottom-buttons-box">
-        <button @click="$router.push('/add-post')">Add Post</button>
+        <button @click="$router.push('/add-post')" class="bottom-buttons">Add Post</button>
         <button v-if="authResult" @click="deleteAll" class="bottom-buttons">Delete all</button>
       </div>
     </section>
@@ -76,6 +76,26 @@ updatePostInList(updatedPost) {
 sortPosts() {
     this.posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   },
+  deleteAll() {
+  if (!confirm("Are you sure you want to delete ALL posts?")) return;
+
+  fetch("http://localhost:3000/api/posts/delete-all", {
+    method: "DELETE",
+    credentials: "include",
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Unauthorized or error");
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      this.posts = [];
+    })
+    .catch((err) => {
+      console.error(err.message);
+      alert("You must be logged in to delete posts!");
+    });
+},
     Logout() {
       fetch("http://localhost:3000/auth/logout", {
           credentials: 'include', //  Don't forget to specify this if you need cookies
@@ -101,26 +121,6 @@ sortPosts() {
     }
   },
 
-deleteAll() {
-  if (!confirm("Are you sure you want to delete ALL posts?")) return;
-
-  fetch("http://localhost:3000/api/posts/deleteAll", {
-    method: "DELETE",
-    credentials: "include",
-  })
-    .then((response) => {
-      if (!response.ok) throw new Error("Unauthorized or error");
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      this.posts = []; // clear UI
-    })
-    .catch((err) => {
-      console.error(err.message);
-      alert("You must be logged in to delete posts!");
-    });
-},
   
   mounted() {
        fetch('http://localhost:3000/api/posts')
@@ -137,6 +137,10 @@ deleteAll() {
 
 <style>
 
+.bottom-buttons {
+  margin-bottom: 10px;
+}
+
 .button-container{
   padding-top: 10px;
   padding-bottom: 10px;
@@ -144,13 +148,13 @@ deleteAll() {
 }
 
 .center-main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* post-list ülaossa, nupud alla */
   min-width: 600px;
   border: var(--border-1) 1px solid;
   border-radius: 15px;
-  background: linear-gradient(135deg, 
-    rgba(71, 85, 105, 0.9) 0%, 
-    rgba(100, 116, 139, 0.85) 50%, 
-    rgba(148, 163, 184, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(71, 85, 105, 0.9) 0%, rgba(100, 116, 139, 0.85) 50%, rgba(148, 163, 184, 0.8) 100%);
   backdrop-filter: blur(6px);
   box-shadow: 0 8px 32px rgba(131, 131, 131, 0.3);
 }
@@ -170,9 +174,9 @@ deleteAll() {
 
 /* POSTITUSTE STIILID */
 .post-list {
-  display: flex;
+  flex:1;
   flex-direction: column;
-  padding: 15px
+  padding: 15px;
 }
 
 .post {
