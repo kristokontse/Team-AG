@@ -177,17 +177,31 @@ app.get('/api/posts/:id', async(req, res) => {
     }
 }); 
 
-app.put('/api/posts/:id', async(req, res) => {
+app.put('/api/posts/:id', requireAuth, async(req, res) => {
     try {
         const { id } = req.params;
-        const post = req.body;
-        console.log("update request has arrived");
+        const { body } = req.body;
+        if (!body || body.trim() === "") return res.status(400).send("Body cannot be empty");
+
         const updatepost = await pool.query(
-            "UPDATE posttable SET (body) = ($2) WHERE id = $1", [id, post.body]
+            "UPDATE posttable SET body = $2 WHERE id = $1 RETURNING *",
+            [id, body]
         );
-        res.json(updatepost);
+        res.json(updatepost.rows[0]);
     } catch (err) {
         console.error(err.message);
+        res.status(500).send("Server error");
+    }
+});
+
+app.delete('/api/posts/:id', requireAuth, async (req, res) => {
+    try {
+        const { id } = req.params;
+        await pool.query("DELETE FROM posttable WHERE id = $1", [id]);
+        res.json({ message: "Post deleted" });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server error");
     }
 });
 

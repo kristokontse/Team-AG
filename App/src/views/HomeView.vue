@@ -6,7 +6,7 @@
       </div>
 
       <div class="post-list">
-        <div class="post" v-for="post in posts" :key="post.id">
+        <div class="post" v-for="post in posts" :key="post.id" @click="goToPost(post.id)">
           <p> {{ formatDate(post.created_at) }}</p>
           <p> {{ post.body }}</p>
         </div>
@@ -35,6 +35,47 @@ export default {
     }
   },
   methods: {
+    goToPost(id) {
+        this.$router.push(`/post/${id}`);
+    },
+  addPost() {
+  const body = prompt("Write a post:");
+
+  if (!body || body.trim() === "") {
+    alert("Post cannot be empty!");
+    return;
+  }
+
+  fetch("http://localhost:3000/api/posts/", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ body })
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Unauthorized or error");
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Post added:", data);
+      this.posts.unshift(data);
+      this.sortPosts();
+    })
+    .catch((err) => {
+      console.error(err.message);
+      alert("You must be logged in to add posts!");
+    });
+},
+updatePostInList(updatedPost) {
+  const index = this.posts.findIndex(p => p.id === updatedPost.id);
+  if (index !== -1) this.posts[index] = updatedPost;
+  this.sortPosts();
+},
+sortPosts() {
+    this.posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  },
     Logout() {
       fetch("http://localhost:3000/auth/logout", {
           credentials: 'include', //  Don't forget to specify this if you need cookies
@@ -60,36 +101,6 @@ export default {
     }
   },
 
-  addPost() {
-  const body = prompt("Write a post:");
-
-  if (!body || body.trim() === "") {
-    alert("Post cannot be empty!");
-    return;
-  }
-
-  fetch("http://localhost:3000/api/posts/", {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ body })
-  })
-    .then((response) => {
-      if (!response.ok) throw new Error("Unauthorized or error");
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Post added:", data);
-      this.posts.push(data.rows[0]); // update UI immediately
-    })
-    .catch((err) => {
-      console.error(err.message);
-      alert("You must be logged in to add posts!");
-    });
-},
-
 deleteAll() {
   if (!confirm("Are you sure you want to delete ALL posts?")) return;
 
@@ -112,10 +123,13 @@ deleteAll() {
 },
   
   mounted() {
-        fetch('http://localhost:3000/api/posts')
-        .then((response) => response.json())
-        .then(data => this.posts = data)
-        .catch(err => console.log(err.message))
+       fetch('http://localhost:3000/api/posts')
+    .then((response) => response.json())
+    .then(data => {
+      this.posts = data;
+      this.sortPosts(); 
+    })
+    .catch(err => console.log(err.message));
     }
 };
 </script>
