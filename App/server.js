@@ -130,13 +130,15 @@ const requireAuth = (req, res, next) => {
     });
 };
 
-// Posti lisamine
+
 app.post('/api/posts', requireAuth, async (req, res) => {
     try {
-        const { content, date } = req.body;
+        const { body } = req.body;  // ⚠️ see peab klappima JSONi võtmega
+        if (!body || body.trim() === "") return res.status(400).send("Body cannot be empty");
+
         const newpost = await pool.query(
-            "INSERT INTO posttable(body, date) VALUES ($1, $2) RETURNING *",
-            [content, date]
+            "INSERT INTO posttable(body) VALUES ($1) RETURNING *",
+            [body]
         );
         res.json(newpost.rows[0]);
     } catch (err) {

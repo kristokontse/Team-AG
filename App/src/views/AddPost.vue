@@ -29,18 +29,18 @@ export default {
 
   methods: {
         addPost() {
-    console.log("AddPost method triggered"); // <- näitab, et nuppu vajutati
+    console.log("AddPost method triggered");
     if (!this.content.trim()) {
         this.errorMessage = "Content cannot be empty";
-        console.log("Post content is empty"); // <- kui midagi pole kirjutatud
+        console.log("Post content is empty");
         return;
     }
 
     fetch("http://localhost:3000/api/posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ body: this.content, date: new Date().toISOString() })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ body: this.content }) 
     })
     .then(response => {
         console.log("Response status:", response.status);
