@@ -21,7 +21,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import auth from "../auth";
 
 export default {
@@ -171,7 +170,7 @@ button:hover {
 .center-main{
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* post-list ülaossa, nupud alla */
+  justify-content: space-between;
   min-width: 600px;
   border: var(--border-1) 1px solid;
   border-radius: 15px;
@@ -221,7 +220,6 @@ button:hover {
   cursor: pointer;
 }
 
-/* Kuupäeva stiil */
 .post p:first-child {
   color: #555555;
   font-size: 14px;
@@ -230,7 +228,6 @@ button:hover {
   text-align: left;
 }
 
-/* Postituse teksti stiil */
 .post p:last-child {
   color: #000000;
   font-size: 16px;

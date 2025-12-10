@@ -1,18 +1,15 @@
 <template>
   <div id="app">
-    <!-- Nav / Header osa -->
     <nav class="header">
       <router-link to="/" exact>Home</router-link>
       <span>|</span>
       <router-link to="/contactus" exact>Contacts</router-link>
     </nav>
 
-    <!-- Main content -->
     <main class="main-content">
       <router-view />
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="footer-content">
         <p>&copy; 2025 Team AG - All rights reserved</p>

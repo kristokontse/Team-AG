@@ -31,7 +31,7 @@ export default {
       return res.json();
     })
     .then(data => {
-      this.body = data.body || ""; // täidab textarea
+      this.body = data.body || "";
     })
     .catch(err => {
       console.error(err);
