@@ -23,7 +23,6 @@
 
 <style>
 
-
 body {
 background-color:#556;
 background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),

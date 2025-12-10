@@ -56,11 +56,12 @@ LogIn() {
 </script>
 
 <style scoped>
+
 .form {
   max-width: 350px;
   margin: 30px auto;
   text-align: left;
-  padding: 60px;
+  padding: 30px;
   border-radius: 10px;
   background: linear-gradient(135deg, 
     rgba(71, 85, 105, 0.9) 0%, 
@@ -134,12 +135,12 @@ button:active {
 
 
 .center {
-  margin: auto;
-  padding: 10px 20px;
+  padding: 10px 15px; 
   margin-top: 20px;
-  margin-right: 10px;
-  margin-left: 10px;
-  width: 50%; 
+  margin-right: 5px; 
+  margin-left: 5px;
+  flex: 1; 
+  min-width: 0;
 }
 .container {
   display: flex;

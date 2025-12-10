@@ -126,7 +126,7 @@ textarea {
 
 .button-row {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   justify-content: flex-start;
 }
 
@@ -173,6 +173,16 @@ button:last-child:hover {
     max-width: 100%;
     padding: 15px;
     margin: 10px auto;
+  }
+
+  .button-row {
+    flex-direction: column; /* Nupud üksteise alla */
+    gap: 10px;
+  }
+  
+  button {
+    width: 90%;
+    padding: 10px;
   }
 }
 </style>
