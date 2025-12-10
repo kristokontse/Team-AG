@@ -142,13 +142,30 @@ sortPosts() {
 <style>
 
 .bottom-buttons {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  margin: 10px;
+  padding: 12px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(231, 239, 249, 0.85) 50%, 
+    rgba(255, 255, 255, 0.8) 100%);
+  border: none;
+  box-shadow: 0 8px 32px rgba(131, 131, 131, 0.3);
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .button-container{
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 15px;
+  margin-top: 10px;
 }
 
 .center-main{
@@ -176,7 +193,6 @@ sortPosts() {
   border: var(--border-1) 1px solid;
 }
 
-/* POSTITUSTE STIILID */
 .post-list {
   flex:1;
   flex-direction: column;
@@ -202,6 +218,7 @@ sortPosts() {
 .post:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 /* Kuupäeva stiil */

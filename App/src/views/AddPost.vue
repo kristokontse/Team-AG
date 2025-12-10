@@ -1,5 +1,5 @@
 <template>
-  <div class="signup-container">
+  <div class="addPost-container">
     <h3>Add Post</h3>
 
     <form @submit.prevent="addPost">
@@ -71,13 +71,14 @@ h3 {
   text-align: center;
   color: rgb(255, 255, 255);
   font-weight: bold;
+  margin-bottom: 15px;
 }
 
-.signup-container {    
+.addPost-container {    
   max-width: 420px;
-  margin: 30px auto;
+  margin: 20px auto;
   text-align: left;
-  padding: 60px;
+  padding: 45px;
   border-radius: 10px;
   background: linear-gradient(135deg, 
     rgba(71, 85, 105, 0.9) 0%, 
@@ -87,7 +88,7 @@ h3 {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.signup-container form {
+.addPost-container form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -112,6 +113,8 @@ button, #add-button {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin-top: 15px;
 }
 
 #add-button {
@@ -132,9 +135,8 @@ button, #add-button {
   margin-top: 8px;
 }
 
-/* mobile */
 @media screen and (max-width: 800px) {
-  .signup-container {
+  .addPost-container {
     max-width: 100%;
     padding: 15px;
     margin: 10px auto;

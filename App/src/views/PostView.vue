@@ -1,5 +1,5 @@
 <template>
-  <div class="signup-container">
+  <div class="aPost-container">
     <h3>A post</h3>
 
     <textarea v-model="body"></textarea>
@@ -97,13 +97,14 @@ h3 {
   text-align: center;
   color: rgb(255, 255, 255);
   font-weight: bold;
+  margin-bottom: 15px;
 }
 
-.signup-container {    
+.aPost-container {    
   max-width: 420px;
   margin: 30px auto;
   text-align: left;
-  padding: 60px;
+  padding: 45px;
   border-radius: 10px;
   background: linear-gradient(135deg, 
     rgba(71, 85, 105, 0.9) 0%, 
@@ -168,7 +169,7 @@ button:last-child:hover {
 }
 
 @media screen and (max-width: 800px) {
-  .signup-container {
+  .aPost-container {
     max-width: 100%;
     padding: 15px;
     margin: 10px auto;

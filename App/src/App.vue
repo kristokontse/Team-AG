@@ -4,7 +4,7 @@
     <nav class="header">
       <router-link to="/" exact>Home</router-link>
       <span>|</span>
-      <router-link to="/contactus" exact>Contact Us</router-link>
+      <router-link to="/contactus" exact>Contacts</router-link>
     </nav>
 
     <!-- Main content -->
