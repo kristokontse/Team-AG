@@ -23,6 +23,14 @@ const routes = [{
         path: '/post/:id',
         name: 'PostView',
         component: PostView,
+        beforeEnter: async (to, from, next) => {
+            let authResult = await auth.authenticated();
+            if (!authResult) {
+                next('/login');
+            } else {
+                next();
+            }
+        }
     },
     {
         path: "/signup",
@@ -37,7 +45,15 @@ const routes = [{
     {
         path: '/add-post',
         name: 'add-post',
-        component: AddPost
+        component: AddPost,
+        beforeEnter: async (to, from, next) => {
+            let authResult = await auth.authenticated();
+            if (!authResult) {
+                next('/login');
+            } else {
+                next();
+            }
+        }
     },
     {
         path: "/contactus",
