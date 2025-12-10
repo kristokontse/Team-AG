@@ -131,17 +131,4 @@ background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
   color: white;
 }
 
-@media (max-width: 600px) {
-  .footer {
-    padding: 15px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, 
-    rgba(71, 85, 105, 0.9) 0%, 
-    rgba(100, 116, 139, 0.85) 50%, 
-    rgba(148, 163, 184, 0.8) 100%);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-}
-
 </style>

@@ -68,6 +68,7 @@ LogIn() {
     rgba(148, 163, 184, 0.8) 100%);
   backdrop-filter: blur(6px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
 h3 {
   text-align: center;
@@ -77,7 +78,7 @@ h3 {
 label {
   color: rgb(255, 255, 255);
   display: inline-block;
-  margin: 25px 0 15px;
+  margin: 25px 0 25px;
   font-size: 0.8em;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -148,8 +149,7 @@ button:active {
 @media screen and (max-width: 800px) {
   .form {
     max-width: 100%;
-    padding: 30px;
-    margin: 10px auto;
+    padding: 25px;
   }
 }
 </style>

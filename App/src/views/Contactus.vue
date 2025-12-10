@@ -26,5 +26,15 @@ export default {
     rgba(148, 163, 184, 0.8) 100%);
   backdrop-filter: blur(6px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
+
+
+@media (max-width: 400px) {
+  .contactus {
+    padding: 30px;
+    max-width: 100%; 
+  }
+}
+
 </style>
